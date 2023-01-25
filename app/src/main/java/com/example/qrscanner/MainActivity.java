@@ -21,16 +21,15 @@ public class MainActivity extends AppCompatActivity {
     Button btn_localisation;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState ) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         // Récupération des données
-        btn_scan=findViewById(R.id.btn_scan);
-        btn_localisation=findViewById(R.id.btn_localisation);
+        btn_scan = findViewById(R.id.btn_scan);
+        btn_localisation = findViewById(R.id.btn_localisation);
         // Quand on click sur le bouton cela exécute la méthode : scanCode()
         btn_scan.setOnClickListener(v -> {
-
             scanCode();
         });
         // Quand on click sur le bouton cela exécute l'Activité Maps
@@ -59,10 +58,10 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Prépare notre activité à renvoyer un résultat.
      */
-    ActivityResultLauncher<ScanOptions> barLaucher = registerForActivityResult(new ScanContract(),result -> {
+    ActivityResultLauncher<ScanOptions> barLaucher = registerForActivityResult(new ScanContract(), result -> {
 
         // Affiche ce que contient notre code QR à l'aide d'une boîte de dialogue
-        if (result.getContents() != null){
+        if (result.getContents() != null) {
             AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
             builder.setTitle("Result");
             builder.setMessage(result.getContents());

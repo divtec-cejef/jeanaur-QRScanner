@@ -75,6 +75,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         });
     }
 
+    /**
+     * Création de la map
+     *
+     * @param googleMap La map Google
+     */
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
@@ -85,12 +90,22 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         // Ajouter un Marker de la localisation actuelle dans la carte
         MarkerOptions markerOptions = new MarkerOptions().position(latLng).title("Vous êtes ici !");
         mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
-        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 8));
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 14));
         mMap.addMarker(markerOptions);
     }
+
+    /**
+     * On regarde si on a toute les permissions nécessaire
+     *
+     * @param requestCode  The request code passed.
+     * @param permissions  The requested permissions. Never null.
+     * @param grantResults The grant results for the corresponding permissions
+     *                     which is either {@link android.content.pm.PackageManager#PERMISSION_GRANTED}
+     *                     or {@link android.content.pm.PackageManager#PERMISSION_DENIED}. Never null.
+     */
     @Override
-    public void onRequestPermissionsResult (int requestCode, @NonNull String[] permissions,
-                                            @NonNull int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         switch (requestCode) {
             // Dans le cas lorsque vous cliquez sur le bouton "autoriser" de la pop up,
